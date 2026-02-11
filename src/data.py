@@ -11,7 +11,7 @@ def csv_to_df(csv_path : str) -> pd.DataFrame:
     return Hitters 
 
 # Compute the skewness of Salary
-#print(sp.stats.skew(csv_to_df('/Users/afonsolopes/Salary-Prediction-Boost/Hitters.csv')['Salary']))
+#print(sp.stats.skew(csv_to_df('path')['Salary']))
 
 # log transform the Salary column
 def log_transform_salaries(df : pd.DataFrame):
