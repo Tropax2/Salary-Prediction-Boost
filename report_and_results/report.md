@@ -29,3 +29,15 @@ The target variable is the `Salary` variable, while the others are predictor var
 The CSV is loaded into a pandas DataFrame and rows with missing values are dropped. The `Salary` column is log-transformed due to the fact that 
 such column is strongly right-skewed since there could be players that earn much more than the remaining players. In fact, the skewness of `Salary` is of 1.59, while of log-transformed `Salary` is of -0.18. Categorical predictors are one-hot encoded using `OneHotEncoder`. 
 
+
+
+## Appendix
+
+The skewness of `Salary` was computed using 
+
+```
+import scipy as sp
+sp.stats.skew(csv_to_df('path')['Salary']) 
+``` 
+
+
