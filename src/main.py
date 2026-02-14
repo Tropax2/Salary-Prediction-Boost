@@ -1,6 +1,8 @@
+import pandas as pd
 import data 
 import features
 from models.boost import boost
+from models.linear_regression import linear_regression
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt 
 
@@ -14,8 +16,7 @@ def main():
     
     # Separate the predictors and the response 
     predictors = Hitters_log_transformed[["League", "Division", "NewLeague", "AtBat", "Hits", "HmRun", "Runs", "RBI", "Walks", "Years",
-    "CAtBat", "CHits", "CHmRun", "CRuns", "CRBI", "CWalks",
-    "PutOuts", "Assists", "Errors"]]
+    "CAtBat", "CHits", "CHmRun", "CRuns", "CRBI", "CWalks", "PutOuts", "Assists", "Errors"]]
     response = Hitters_log_transformed['Salary']
 
     # Define the categorical predictors to be one-hot-encoded
@@ -30,7 +31,7 @@ def main():
     X_test_transformed = enc.transform(X_test)
     
     # Perform boost on the training and test set with variable learning_rate with fixed 1000 trees , max_depth of 3 and ccp_alpha of 0
-    learning_rates = [0.005, 0.001, 0.02, 0.05, 0.1, 0.2]
+    learning_rates = [0.005, 0.01, 0.02, 0.05, 0.1, 0.2]
     training_mses, test_mses = [], []
 
     for learning_rate in learning_rates:
@@ -48,8 +49,16 @@ def main():
         test_mse = mean_squared_error(y_test, clf.predict(X_test_transformed))
         test_mses.append(test_mse)
 
-    
-    # Plot of the training mses vs the learning rates 
+    print(test_mses)
+
+    # Obtain the most important predictors 
+    predictor_names = ["League", "Division", "NewLeague", "AtBat", "Hits", "HmRun", "Runs", "RBI", "Walks", "Years",
+    "CAtBat", "CHits", "CHmRun", "CRuns", "CRBI", "CWalks", "PutOuts", "Assists", "Errors"]
+    predictor_imp = pd.DataFrame({"importance": clf.feature_importances_}, index=predictor_names)   
+
+    print(predictor_imp.sort_values(by="importance", ascending=False))
+
+    # Plot of the training mse vs the learning rate
     plt.figure()
     plt.plot(learning_rates, training_mses)
     plt.xlabel("Learning Rate")
@@ -58,7 +67,7 @@ def main():
     plt.grid(True)
     plt.show()
 
-    # Plot of the test mses vs the learning rates 
+    # Plot of the test mse vs the learning rate
     plt.figure()
     plt.plot(learning_rates, test_mses)
     plt.xlabel("Learning Rate")
@@ -66,6 +75,6 @@ def main():
     plt.title("Test MSE vs Learning Rate")
     plt.grid(True)
     plt.show()
-
+        
 if __name__ == '__main__':
     main()
