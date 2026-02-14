@@ -22,7 +22,7 @@ The `Salary` response variable proved to be trongly right-skewed and so it is lo
 
 ## Results Summary 
 
-- **Boost**: Training MSE follows a decreasing monotonic pattern when we increase the learning rate, resulting in an almost perfect fit of the training data. However, the test MSE didn't exhibit a similar pattern, it follows an inverted U-shape and noticeable fluctuations that are the result of overfitting. In our run, the lowest test MSE was of approximately 0.165.
+ Training MSE follows a decreasing monotonic pattern when we increase the learning rate, resulting in an almost perfect fit of the training data. However, the test MSE didn't exhibit a similar pattern, it follows an inverted U-shape and noticeable fluctuations that are the result of overfitting. In our run, the lowest test MSE was of approximately 0.165.
 
 ## How to run 
 
