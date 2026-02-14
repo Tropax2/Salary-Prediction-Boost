@@ -2,7 +2,6 @@ import pandas as pd
 import data 
 import features
 from models.boost import boost
-from models.linear_regression import linear_regression
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt 
 
@@ -49,8 +48,6 @@ def main():
         test_mse = mean_squared_error(y_test, clf.predict(X_test_transformed))
         test_mses.append(test_mse)
 
-    print(test_mses)
-
     # Obtain the most important predictors 
     predictor_names = ["League", "Division", "NewLeague", "AtBat", "Hits", "HmRun", "Runs", "RBI", "Walks", "Years",
     "CAtBat", "CHits", "CHmRun", "CRuns", "CRBI", "CWalks", "PutOuts", "Assists", "Errors"]
@@ -75,6 +72,6 @@ def main():
     plt.title("Test MSE vs Learning Rate")
     plt.grid(True)
     plt.show()
-        
+
 if __name__ == '__main__':
     main()
