@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 # This is the main function 
 def main():
     # Load the data, transform into a pandas df and remove rows with empty values 
-    Hitters = data.csv_to_df('/Users/afonsolopes/Salary-Prediction-Boost/Hitters.csv')
+    Hitters = data.csv_to_df('path/Hitters.csv')
 
     # log-transform the Salary column 
     Hitters_log_transformed = data.log_transform_salaries(Hitters)
