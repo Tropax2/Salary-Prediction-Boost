@@ -18,7 +18,7 @@ The dataset includes predictors capturing information about performance records 
 
 ## Methods 
 
-The `Salary` response variable proved to be trongly right-skewed and so it is log-transformed. Categorical predictors are one-hot-encoded. Since only boosting was to be applied, we didn't see any relevance in standardising the remaining predictors. In order to study how the learning rate affects both the training and test MSE, the most relevant parameters of the method, such as the number of trees, the max depth of each tree and cost-complexity are fixed.
+The `Salary` response variable proved to be strongly right-skewed and so it is log-transformed. Categorical predictors are one-hot-encoded. Since only boosting was to be applied, we didn't see any relevance in standardising the remaining predictors. In order to study how the learning rate affects both the training and test MSE, the most relevant parameters of the method, such as the number of trees, the max depth of each tree and cost-complexity are fixed.
 
 ## Results Summary 
 
